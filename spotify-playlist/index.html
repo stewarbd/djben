@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#121212" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Playlist Importer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+
+  <header>
+    <svg class="logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.516 17.316a.75.75 0 01-1.032.25c-2.822-1.724-6.376-2.114-10.56-1.158a.75.75 0 11-.334-1.462c4.579-1.045 8.507-.594 11.676 1.338a.75.75 0 01.25 1.032zm1.47-3.27a.937.937 0 01-1.288.308c-3.23-1.985-8.152-2.56-11.976-1.4a.937.937 0 11-.546-1.792c4.365-1.328 9.79-.685 13.502 1.596a.937.937 0 01.308 1.288zm.127-3.405c-3.873-2.3-10.26-2.511-13.95-1.39a1.125 1.125 0 11-.653-2.152c4.242-1.288 11.29-1.04 15.741 1.607a1.125 1.125 0 01-1.138 1.935z"/>
+    </svg>
+    <h1>Playlist Importer</h1>
+  </header>
+
+  <!-- Auth section: shown when not logged in -->
+  <section id="auth-section">
+    <p>Paste a list of songs and create a Spotify playlist — right from your browser.</p>
+    <button id="login-btn" class="btn-primary" style="max-width:280px">Log in with Spotify</button>
+  </section>
+
+  <!-- App section: shown after login -->
+  <section id="app-section" class="hidden">
+
+    <div id="user-bar">
+      <span>Logged in as <span id="user-name">…</span></span>
+      <button id="logout-btn" class="btn-secondary">Log out</button>
+    </div>
+
+    <div class="field-group">
+      <label for="playlist-name">Playlist name</label>
+      <input
+        type="text"
+        id="playlist-name"
+        placeholder="Imported 2026-06-22"
+        maxlength="100"
+      />
+    </div>
+
+    <div class="field-group">
+      <label for="songs-input">Songs (one per line)</label>
+      <textarea
+        id="songs-input"
+        placeholder="Artist - Title&#10;Another Artist - Song Name&#10;Just a Song Title"
+        spellcheck="false"
+      ></textarea>
+      <p class="hint">Each line is searched as-is. "Artist - Title" works best.</p>
+    </div>
+
+    <button id="create-btn" class="btn-primary">Create Playlist</button>
+
+    <!-- Progress (shown while working) -->
+    <div id="progress-section" class="hidden">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+      <p id="progress-label">Searching…</p>
+    </div>
+
+    <!-- Results (shown after completion) -->
+    <div id="results-section" class="hidden"></div>
+
+    <!-- Error display -->
+    <div id="error-box" class="error-card hidden"></div>
+
+  </section>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

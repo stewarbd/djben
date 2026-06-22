@@ -1,0 +1,17 @@
+{
+  "name": "Playlist Importer",
+  "short_name": "Playlist",
+  "description": "Turn a list of songs into a Spotify playlist",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%231db954'/%3E%3Cpath fill='%23000' d='M12 5a7 7 0 100 14A7 7 0 0012 5zm3.196 10.093a.437.437 0 01-.6.145 8.7 8.7 0 00-6.15-.673.437.437 0 01-.195-.852 9.574 9.574 0 016.8.745.437.437 0 01.145.635zm.857-1.908a.547.547 0 01-.75.18 10.868 10.868 0 00-6.99-.818.547.547 0 01-.317-1.047c2.546-.773 5.71-.399 7.876.93a.547.547 0 01.18.755zm.074-1.985a.656.656 0 01-.9.215 13.045 13.045 0 00-8.127-.812.656.656 0 01-.381-1.254c2.475-.752 6.59-.607 9.193.938a.656.656 0 01.215.913z'/%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
