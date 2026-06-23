@@ -59,7 +59,11 @@ async function exchangeCode(code) {
       code_verifier: verifier,
     }),
   });
-  if (!res.ok) throw new Error('Token exchange failed');
+  sessionStorage.removeItem('pkce_verifier');
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Token exchange failed (${res.status}): ${body}`);
+  }
   return res.json();
 }
 
@@ -263,13 +267,12 @@ async function boot() {
     // Clean URL before exchanging so a reload doesn't re-use the code
     history.replaceState({}, '', location.pathname);
     sessionStorage.removeItem('oauth_state');
-    sessionStorage.removeItem('pkce_verifier');
 
     try {
       const data = await exchangeCode(code);
       sessionStorage.setItem('access_token', data.access_token);
-    } catch {
-      showError('Login failed — please try again.');
+    } catch (err) {
+      showError(`Login failed: ${err.message}`);
       showSection('auth-section');
       return;
     }
